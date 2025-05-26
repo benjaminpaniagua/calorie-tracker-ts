@@ -28,7 +28,7 @@ export default function ActivityList({
       </h2>
 
       {isEmpty ? (
-        <p className="text-center mt-12 text-sky-800 opacity-60 ">
+        <p className="text-center mt-12 text-gray-800/60">
           No meals or exercises yet..
         </p>
       ) : (
@@ -49,7 +49,9 @@ export default function ActivityList({
                 <h3 className="text-xl font-black text-black">
                   {activity.name}
                 </h3>
-                <h2 className="text-3xl font-black">
+                <h2 className={`text-3xl font-black ${
+                  activity.category === 1 ? "text-green-600" : "text-orange"
+                }`}>
                   {activity.calories} {""}
                   <span>Calories</span>
                 </h2>
@@ -64,7 +66,7 @@ export default function ActivityList({
                   })
                 }
               >
-                <PencilSquareIcon className="w-8 h-8 text-sky-600 hover:text-sky-300 cursor-pointer transition duration-200" />
+                <PencilSquareIcon className="w-8 h-8 text-sky-950 hover:text-sky-950/65 cursor-pointer transition duration-200" />
               </button>
 
               <button
@@ -75,7 +77,7 @@ export default function ActivityList({
                   })
                 }
               >
-                <TrashIcon className="w-8 h-8 text-red-600 hover:text-red-300 cursor-pointer transition duration-200" />
+                <TrashIcon className="w-8 h-8 text-red-500 hover:text-red-500/65 cursor-pointer transition duration-200" />
               </button>
             </div>
           </div>

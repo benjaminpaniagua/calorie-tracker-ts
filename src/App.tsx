@@ -17,7 +17,7 @@ function App() {
   );
   return (
     <div>
-      <header className="bg-lime-500" >
+      <header className="bg-green" >
         <div className="flex justify-between p-2 items-center mx-auto max-w-4xl">
           <a
             href="/"
@@ -26,7 +26,7 @@ function App() {
             Calories Tracker
           </a>
           <button
-            className="bg-lime-600 hover:bg-lime-600/70 text-white font-bold px-4 py-2 rounded-lg uppercase transition duration-200 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+            className="bg-green-600 hover:bg-green-600/80 text-white font-bold px-4 py-2 rounded-lg uppercase transition duration-200 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
             disabled={!canRestartApp}
             title="Restart the app"
             onClick={() => dispatch({ type: "RESTART_APP" })}
@@ -36,7 +36,7 @@ function App() {
         </div>
       </header>
 
-      <section className="bg-lime-500/90 py-20 px-5">
+      <section className="bg-green/90 py-20 px-5">
         <div className="mx-auto max-w-2xl">
           <Form dispatch={dispatch} state={state} />
         </div>
