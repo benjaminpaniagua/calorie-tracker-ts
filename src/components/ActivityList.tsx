@@ -23,7 +23,7 @@ export default function ActivityList({
 
   return (
     <>
-      <h2 className="text-4xl font-black text-sky-800 text-center">
+      <h2 className="text-4xl font-black text-gray-800 text-center">
         Meals and Exercises
       </h2>
 
@@ -40,7 +40,7 @@ export default function ActivityList({
             <div className="space-y-2 relative">
               <p
                 className={`absolute -top-6 -left-6 px-10 py-2 text-white uppercase font-bold ${
-                  activity.category === 1 ? "bg-emerald-600" : "bg-indigo-600"
+                  activity.category === 1 ? "bg-green-600" : "bg-orange"
                 } rounded-br-xl rounded-tl-lg`}
               >
                 {categoryName(activity.category)}

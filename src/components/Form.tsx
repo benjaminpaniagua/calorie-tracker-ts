@@ -135,7 +135,7 @@ export default function Form({ dispatch, state }: FormProps) {
 
       <input
         type="submit"
-        className="bg-blue-400 hover:bg-blue-500 text-white font-bold py-2 rounded-lg uppercase w-full cursor-pointer transition duration-200 disabled:bg-red-200 disabled:hover:bg-red-300 disabled:cursor-not-allowed"
+        className="bg-blue-400 hover:bg-blue-500 text-white font-bold py-2 rounded-lg uppercase w-full cursor-pointer transition duration-200 disabled:bg-red-500/30 disabled:cursor-not-allowed"
         value={addActivity()}
         disabled={!isValidActivity()}
       />

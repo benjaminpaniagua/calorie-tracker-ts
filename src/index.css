@@ -13,4 +13,26 @@
 
 body {
     font-family: var(--font-inter);
+    background-color: var(--color-gray-light);
+}
+
+
+@theme {
+  --color-green: #4CAF50;
+  --color-bermuda: #81C784;
+
+  --color-red: #F44336;
+  --color-red-light: #E57373;
+
+  --color-orange: #FF9800;
+  --color-orange-light: #FFB74D;
+
+  --color-blue: #2196F3;
+  --color-blue-light: #90CAF9;
+
+  /* Neutrales */
+  --color-white: #FFFFFF;   
+  --color-gray-light: #F5F5F5; 
+  --color-black: #212121;     
+  --color-gray: #757575;
 }
