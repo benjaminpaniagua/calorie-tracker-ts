@@ -1,24 +1,40 @@
-import { useState, Dispatch } from "react";
-
+import { useState, useEffect } from "react";
+import type { Dispatch } from "react";
 import { v4 as uuidv4 } from "uuid";
 
-import { Activity } from "../types";
+import type { Activity } from "../types";
 import { categories } from "../data/categories";
-import type { ActivityActions } from "../reducers/activity-reducer";
+import type {
+  ActivityActions,
+  ActivityState,
+} from "../reducers/activity-reducer";
 
 type FormProps = {
   dispatch: Dispatch<ActivityActions>;
+  state: ActivityState;
 };
 
-const initialState : Activity = {
-    id: uuidv4(),
+const initialState: Activity = {
+  id: uuidv4(),
   category: 0,
   name: "",
   calories: 0,
 };
 
-export default function Form({ dispatch }: FormProps) {
+export default function Form({ dispatch, state }: FormProps) {
   const [activity, setActivity] = useState<Activity>(initialState);
+
+  useEffect(() => {
+    if (state.activeId) {
+      const selectedActivity = state.activities.filter(
+        (stateActivity) => stateActivity.id === state.activeId
+      )[0]; //filter the activities to find the one that matches the activeId
+      setActivity({
+        ...selectedActivity,
+        id: state.activeId,
+      });
+    }
+  }, [state.activeId]);
 
   const handleChange = (
     e:
@@ -58,8 +74,8 @@ export default function Form({ dispatch }: FormProps) {
       payload: { newActivity: activity },
     });
     setActivity({
-        ...initialState,
-        id: uuidv4(), //inyect a new id
+      ...initialState,
+      id: uuidv4(), //inyect a new id
     }); //reset the form
   };
 
@@ -78,9 +94,9 @@ export default function Form({ dispatch }: FormProps) {
           value={activity.category}
           onChange={handleChange}
         >
-          <option key={0} value={0} selected>
-            Select a category
-          </option>
+          <option key={0} value={0}>
+  Select a category
+</option>
           {categories.map((item) => (
             <option key={item.id} value={item.id}>
               {item.name}
@@ -119,7 +135,7 @@ export default function Form({ dispatch }: FormProps) {
 
       <input
         type="submit"
-        className="bg-blue-400 hover:bg-gray-600 text-white font-bold py-2 rounded-lg uppercase w-full cursor-pointer transition duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+        className="bg-blue-400 hover:bg-blue-500 text-white font-bold py-2 rounded-lg uppercase w-full cursor-pointer transition duration-200 disabled:bg-red-200 disabled:hover:bg-red-300 disabled:cursor-not-allowed"
         value={addActivity()}
         disabled={!isValidActivity()}
       />
